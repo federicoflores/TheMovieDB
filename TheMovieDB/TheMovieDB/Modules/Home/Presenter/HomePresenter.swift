@@ -6,8 +6,6 @@
 //
 
 import Foundation
-//TODO:: DELETE ONCE SOLVED IMAGE TROUBLE
-import UIKit
 
 protocol HomePresenterProtocols: AnyObject {
     var topRatedMoviesResponse: TopRatedResponse { get}
@@ -17,14 +15,16 @@ protocol HomePresenterProtocols: AnyObject {
     func numberOfRowsInSection() -> Int
     func didSelectRow(at indexPath: Int)
     func getTopRatedMovieViewModel(from row: Int) -> HomeMovieViewModel?
+    func didScrollToBottom(row: Int) -> Bool
 }
-
 
 class HomePresenter: HomePresenterProtocols {
     
     weak var homeView: HomeViewProtocols?
     var homeInteractor: HomeInteractorProtocols?
     var homeRouter: HomeRouterProtocols?
+    
+    let dateFormatter = TMDBDateFormatter()
     
     var topRatedMoviesResponse: TopRatedResponse = TopRatedResponse(results: [])
     private var currentPage = 1
@@ -39,11 +39,13 @@ class HomePresenter: HomePresenterProtocols {
         topRatedMoviesResponse.results.append(contentsOf: response.results)
         currentPage += 1
         homeView?.reloadTableView()
+        homeView?.isEmptyStateHidden(isHidden: true)
     }
     
     func onFetchTopRatedMoviesFail(error: String) {
         homeView?.hideLoadingView()
-        print(error)
+        homeView?.isEmptyStateHidden(isHidden: false)
+        homeView?.setEmptyStateSubtitle(subtitle: error)
     }
     
     func numberOfRowsInSection() -> Int {
@@ -51,12 +53,26 @@ class HomePresenter: HomePresenterProtocols {
     }
     
     func didSelectRow(at indexPath: Int) {
-        homeRouter?.goToDetail()
+        let movie = topRatedMoviesResponse.results[indexPath]
+        homeRouter?.goToDetail(with: DetailMovieViewModel(
+            title: movie.title,
+            posterPath: Constants.imageBaseUrl + movie.posterPath,
+            releaseDate: dateFormatter.formatStringDate(stringDate: movie.releaseDate, from: .yearMonthDay, to: .dayMonthYear),
+            overview: movie.overview,
+            rating: movie.voteAverage))
     }
     
     func getTopRatedMovieViewModel(from row: Int) -> HomeMovieViewModel? {
         let movie = topRatedMoviesResponse.results[row]
-        return HomeMovieViewModel(title: movie.title, releaseDate: movie.releaseDate, posterPath: movie.posterPath)
+        
+        
+        return HomeMovieViewModel(
+            title: movie.title,
+            releaseDate: dateFormatter.formatStringDate(stringDate: movie.releaseDate, from: .yearMonthDay, to: .dayMonthYear),
+            posterPath: movie.posterPath)
     }
     
+    func didScrollToBottom(row: Int) -> Bool {
+        row == (topRatedMoviesResponse.results.count) - 1
+    }
 }

@@ -21,7 +21,7 @@ class HomeInteractor: HomeInteractorProtocols {
     }
     
     func fetchTopRatedMovies(page: Int) {
-        BaseRepository().fetchDecodable(endpoint: DataEndpoint.fetchMovieTopRated)  { [weak self] (result: Result<TopRatedResponse, Error>) in
+        provider.fetchDecodable(endpoint: DataEndpoint.fetchMovieTopRated(page: "\(page)"))  { [weak self] (result: Result<TopRatedResponse, Error>) in
             switch result {
             case .success(let response):
                 self?.homePresenter?.onFetchTopRatedMoviesSuccess(response: response)
@@ -29,9 +29,5 @@ class HomeInteractor: HomeInteractorProtocols {
                 self?.homePresenter?.onFetchTopRatedMoviesFail(error: error.localizedDescription)
             }
         }
-    }
-    
-    
-    
-    
+    }    
 }

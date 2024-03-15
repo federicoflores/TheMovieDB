@@ -8,7 +8,7 @@
 import UIKit
 
 protocol HomeRouterProtocols: AnyObject {
-    func goToDetail()
+    func goToDetail(with viewModel: DetailMovieViewModel)
 }
 
 
@@ -16,9 +16,9 @@ class HomeRouter: HomeRouterProtocols {
     
     weak var viewController: UIViewController?
     
-    func goToDetail() {
-        let vc = UIViewController()
-        vc.view.backgroundColor = TMDBColor.main400.color
+    func goToDetail(with viewModel: DetailMovieViewModel) {
+        let vc = DetailModuleBuilder.build(with: viewModel)
+        
         viewController?.navigationController?.pushViewController(vc, animated: true)
     }
 }

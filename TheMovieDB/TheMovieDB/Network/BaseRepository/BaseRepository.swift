@@ -20,7 +20,6 @@ class BaseRepository: BaseRepositoryProtocol {
     
     private var cancellable = Set<AnyCancellable>()
     let sessionConfig = URLSessionConfiguration.default
-    let cacheManager = CacheManager.shared.cache
     
     init() {
         sessionConfig.timeoutIntervalForRequest = Constant.sesionConfigTimeIntervals
@@ -36,12 +35,8 @@ class BaseRepository: BaseRepositoryProtocol {
             return
         }
         
-        if let cached = cacheManager[url.absoluteString as NSString], let decodable = cached as? T {
-            completion(.success(decodable))
-            return
-        }
-        
-        var urlRequest = URLRequest(url: url)
+        var urlRequest = URLRequest(url: url, cachePolicy: .reloadIgnoringLocalCacheData, timeoutInterval: 30)
+        urlRequest.url?.append(queryItems: endpoint.queryItems)
         
         urlRequest.httpMethod = endpoint.method.rawValue
         
@@ -60,7 +55,6 @@ class BaseRepository: BaseRepositoryProtocol {
             .dataTaskPublisher(for: urlRequest)
             .receive(on: DispatchQueue.main)
             .map {
-                print($0.data)
                 return $0.data
             }
             .decode(type: T.self, decoder: JSONDecoder())
@@ -72,7 +66,6 @@ class BaseRepository: BaseRepositoryProtocol {
                     completion(.failure(error))
                 }
             } receiveValue: {  value in
-                self.cacheManager[url.absoluteString as NSString] = value
                 completion(.success(value))
             }
             .store(in: &cancellable)

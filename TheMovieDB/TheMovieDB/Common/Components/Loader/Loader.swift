@@ -1,14 +1,14 @@
 //
 //  Loader.swift
-//  TheMovieDB
+//  DeptChallenge
 //
-//  Created by Fede Flores on 12/03/2024.
+//  Created by Fede Flores on 31/01/2024.
 //
 
 import UIKit
 
 fileprivate enum Constant {
-    static let alpha: CGFloat = 0.9
+    static let alpha: CGFloat = 0.7
     static let progressViewHeight: CGFloat = 60
     static let progressViewWidth: CGFloat = 60
     static let progressViewMargin: CGFloat = 30
@@ -37,7 +37,7 @@ fileprivate enum Constant {
 
 public class Loader: UIView {
     
-    private var progressView: CustomProgressView?
+    private var progressView: ProgressView?
     static var sharedLoader: Loader = Loader()
     var frontWindow: UIWindow?
     
@@ -54,11 +54,14 @@ public class Loader: UIView {
     }
     
     private func customizeUI() {
+        backgroundColor = .clear
+        backgroundColor = .white
         alpha = Constant.alpha
-        progressView  = CustomProgressView(frame: CGRect(x: (frame.width/2) - Constant.progressViewMargin, y: (frame.height/2) - Constant.progressViewMargin, width: Constant.progressViewWidth, height: Constant.progressViewHeight))
+        progressView  = ProgressView(frame: CGRect(x: (frame.width/2) - Constant.progressViewMargin, y: (frame.height/2) - Constant.progressViewMargin, width: Constant.progressViewWidth, height: Constant.progressViewHeight))
         if let progressView = progressView {
             addSubview(progressView)
         }
+        
     }
     
      func show() {
@@ -82,12 +85,12 @@ extension Loader: CAAnimationDelegate {
         isHidden = false
         frontWindow?.endEditing(true)
         frontWindow?.addSubview(self)
-        progressView?.startAnimation(withColor: TMDBColor.main400.color)
+        progressView?.startAnimation(withColor: TMDBColor.main900.color.cgColor)
     }
 }
 
 
-class CustomProgressView: UIView, CAAnimationDelegate {
+class ProgressView: UIView, CAAnimationDelegate {
     
     let circularLayer = CAShapeLayer()
     let strokeAnimationGroup = CAAnimationGroup()
@@ -155,10 +158,10 @@ class CustomProgressView: UIView, CAAnimationDelegate {
         circularLayer.add(rotationAnimation, forKey: Constant.circularLayerRotateAnimationKey)
     }
     
-    func startAnimation(withColor color: UIColor = TMDBColor.main400.color) {
+    func startAnimation(withColor color: CGColor = TMDBColor.main00.color.cgColor) {
          circularLayer.removeAnimation(forKey: Constant.circularLayerStrokeAnimationKey)
         
-        circularLayer.strokeColor = color.cgColor
+        circularLayer.strokeColor = color
         strokeAnimationGroup.duration = 1.0 + outAnimation.beginTime
         strokeAnimationGroup.repeatCount = .infinity
         strokeAnimationGroup.animations = [inAnimation, outAnimation]
@@ -171,5 +174,4 @@ class CustomProgressView: UIView, CAAnimationDelegate {
         circularLayer.removeAllAnimations()
     }
 }
-
 

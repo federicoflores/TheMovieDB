@@ -20,7 +20,6 @@
 		805F1C912BA10E82004A700E /* UIColor+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 805F1C902BA10E82004A700E /* UIColor+Extensions.swift */; };
 		805F1C982BA1127F004A700E /* Colors.swift in Sources */ = {isa = PBXBuildFile; fileRef = 805F1C972BA1127F004A700E /* Colors.swift */; };
 		805F1C9F2BA114AD004A700E /* HomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 805F1C9E2BA114AD004A700E /* HomeViewController.swift */; };
-		805F1CA22BA11857004A700E /* CacheManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 805F1CA12BA11857004A700E /* CacheManager.swift */; };
 		805F1CA42BA118A5004A700E /* HomePresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 805F1CA32BA118A5004A700E /* HomePresenter.swift */; };
 		805F1CA62BA118C7004A700E /* HomeInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 805F1CA52BA118C7004A700E /* HomeInteractor.swift */; };
 		805F1CA82BA118F2004A700E /* HomeRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 805F1CA72BA118F2004A700E /* HomeRouter.swift */; };
@@ -34,6 +33,16 @@
 		805F1CC12BA1476D004A700E /* TopRatedResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 805F1CC02BA1476D004A700E /* TopRatedResponse.swift */; };
 		805F1CC42BA1E610004A700E /* HomeMovieTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 805F1CC32BA1E610004A700E /* HomeMovieTableViewCell.swift */; };
 		805F1CC82BA1E65C004A700E /* HomeMovieViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 805F1CC72BA1E65C004A700E /* HomeMovieViewModel.swift */; };
+		805F1CCA2BA36EF5004A700E /* UIImageView+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 805F1CC92BA36EF5004A700E /* UIImageView+Extensions.swift */; };
+		805F1CCD2BA375D5004A700E /* DetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 805F1CCC2BA375D5004A700E /* DetailViewController.swift */; };
+		80CD6CEA2BA3CD7100075419 /* CircleRatingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 80CD6CE92BA3CD7100075419 /* CircleRatingView.swift */; };
+		80CD6CED2BA3D7EA00075419 /* EmptyStateView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 80CD6CEC2BA3D7EA00075419 /* EmptyStateView.swift */; };
+		80CD6CF02BA479B400075419 /* TMDBDateFormatter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 80CD6CEF2BA479B300075419 /* TMDBDateFormatter.swift */; };
+		80CD6CF32BA479DA00075419 /* DetailViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 80CD6CF22BA479DA00075419 /* DetailViewModel.swift */; };
+		80CD6CF62BA4864900075419 /* CustomAlertViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 80CD6CF52BA4864900075419 /* CustomAlertViewController.swift */; };
+		80CD6CFA2BA4A2CC00075419 /* DetailPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 80CD6CF92BA4A2CC00075419 /* DetailPresenter.swift */; };
+		80CD6CFD2BA4A2DC00075419 /* DetailRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 80CD6CFC2BA4A2DC00075419 /* DetailRouter.swift */; };
+		80CD6CFF2BA4A32700075419 /* DetailModuleBuilder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 80CD6CFE2BA4A32700075419 /* DetailModuleBuilder.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -72,7 +81,6 @@
 		805F1C972BA1127F004A700E /* Colors.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Colors.swift; sourceTree = "<group>"; };
 		805F1C992BA112B6004A700E /* Secrets.xcconfig */ = {isa = PBXFileReference; lastKnownFileType = text.xcconfig; path = Secrets.xcconfig; sourceTree = "<group>"; };
 		805F1C9E2BA114AD004A700E /* HomeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewController.swift; sourceTree = "<group>"; };
-		805F1CA12BA11857004A700E /* CacheManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CacheManager.swift; sourceTree = "<group>"; };
 		805F1CA32BA118A5004A700E /* HomePresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomePresenter.swift; sourceTree = "<group>"; };
 		805F1CA52BA118C7004A700E /* HomeInteractor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeInteractor.swift; sourceTree = "<group>"; };
 		805F1CA72BA118F2004A700E /* HomeRouter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeRouter.swift; sourceTree = "<group>"; };
@@ -86,6 +94,16 @@
 		805F1CC02BA1476D004A700E /* TopRatedResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TopRatedResponse.swift; sourceTree = "<group>"; };
 		805F1CC32BA1E610004A700E /* HomeMovieTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeMovieTableViewCell.swift; sourceTree = "<group>"; };
 		805F1CC72BA1E65C004A700E /* HomeMovieViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeMovieViewModel.swift; sourceTree = "<group>"; };
+		805F1CC92BA36EF5004A700E /* UIImageView+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIImageView+Extensions.swift"; sourceTree = "<group>"; };
+		805F1CCC2BA375D5004A700E /* DetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailViewController.swift; sourceTree = "<group>"; };
+		80CD6CE92BA3CD7100075419 /* CircleRatingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CircleRatingView.swift; sourceTree = "<group>"; };
+		80CD6CEC2BA3D7EA00075419 /* EmptyStateView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EmptyStateView.swift; sourceTree = "<group>"; };
+		80CD6CEF2BA479B300075419 /* TMDBDateFormatter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TMDBDateFormatter.swift; sourceTree = "<group>"; };
+		80CD6CF22BA479DA00075419 /* DetailViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailViewModel.swift; sourceTree = "<group>"; };
+		80CD6CF52BA4864900075419 /* CustomAlertViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomAlertViewController.swift; sourceTree = "<group>"; };
+		80CD6CF92BA4A2CC00075419 /* DetailPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailPresenter.swift; sourceTree = "<group>"; };
+		80CD6CFC2BA4A2DC00075419 /* DetailRouter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailRouter.swift; sourceTree = "<group>"; };
+		80CD6CFE2BA4A32700075419 /* DetailModuleBuilder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailModuleBuilder.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -181,7 +199,7 @@
 		805F1C812BA10CC7004A700E /* Common */ = {
 			isa = PBXGroup;
 			children = (
-				805F1CA02BA11845004A700E /* CacheManager */,
+				80CD6CEE2BA479A600075419 /* DateFormatter */,
 				805F1C8D2BA10E54004A700E /* Utils+Extensions */,
 				805F1C872BA10E02004A700E /* AppConfigurationManager */,
 				805F1C862BA10D8B004A700E /* Components */,
@@ -224,6 +242,10 @@
 		805F1C852BA10CD5004A700E /* Detail */ = {
 			isa = PBXGroup;
 			children = (
+				80CD6CFE2BA4A32700075419 /* DetailModuleBuilder.swift */,
+				80CD6CFB2BA4A2D400075419 /* Router */,
+				80CD6CF82BA4A2C000075419 /* Presenter */,
+				805F1CCB2BA375C2004A700E /* View */,
 			);
 			path = Detail;
 			sourceTree = "<group>";
@@ -231,6 +253,9 @@
 		805F1C862BA10D8B004A700E /* Components */ = {
 			isa = PBXGroup;
 			children = (
+				80CD6CF42BA4863700075419 /* CustomAlertView */,
+				80CD6CEB2BA3D7DB00075419 /* EmptyStateView */,
+				80CD6CE82BA3CD6900075419 /* CircleRatingView */,
 				805F1C8A2BA10E35004A700E /* Loader */,
 			);
 			path = Components;
@@ -257,6 +282,7 @@
 			children = (
 				805F1C8E2BA10E66004A700E /* UIViewController+Extensions.swift */,
 				805F1C902BA10E82004A700E /* UIColor+Extensions.swift */,
+				805F1CC92BA36EF5004A700E /* UIImageView+Extensions.swift */,
 			);
 			path = "Utils+Extensions";
 			sourceTree = "<group>";
@@ -310,14 +336,6 @@
 			path = Router;
 			sourceTree = "<group>";
 		};
-		805F1CA02BA11845004A700E /* CacheManager */ = {
-			isa = PBXGroup;
-			children = (
-				805F1CA12BA11857004A700E /* CacheManager.swift */,
-			);
-			path = CacheManager;
-			sourceTree = "<group>";
-		};
 		805F1CAD2BA1233F004A700E /* BaseRepository */ = {
 			isa = PBXGroup;
 			children = (
@@ -357,6 +375,71 @@
 				805F1CC72BA1E65C004A700E /* HomeMovieViewModel.swift */,
 			);
 			path = ViewModel;
+			sourceTree = "<group>";
+		};
+		805F1CCB2BA375C2004A700E /* View */ = {
+			isa = PBXGroup;
+			children = (
+				805F1CCC2BA375D5004A700E /* DetailViewController.swift */,
+				80CD6CF12BA479CE00075419 /* DetailViewModel */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		80CD6CE82BA3CD6900075419 /* CircleRatingView */ = {
+			isa = PBXGroup;
+			children = (
+				80CD6CE92BA3CD7100075419 /* CircleRatingView.swift */,
+			);
+			path = CircleRatingView;
+			sourceTree = "<group>";
+		};
+		80CD6CEB2BA3D7DB00075419 /* EmptyStateView */ = {
+			isa = PBXGroup;
+			children = (
+				80CD6CEC2BA3D7EA00075419 /* EmptyStateView.swift */,
+			);
+			path = EmptyStateView;
+			sourceTree = "<group>";
+		};
+		80CD6CEE2BA479A600075419 /* DateFormatter */ = {
+			isa = PBXGroup;
+			children = (
+				80CD6CEF2BA479B300075419 /* TMDBDateFormatter.swift */,
+			);
+			path = DateFormatter;
+			sourceTree = "<group>";
+		};
+		80CD6CF12BA479CE00075419 /* DetailViewModel */ = {
+			isa = PBXGroup;
+			children = (
+				80CD6CF22BA479DA00075419 /* DetailViewModel.swift */,
+			);
+			path = DetailViewModel;
+			sourceTree = "<group>";
+		};
+		80CD6CF42BA4863700075419 /* CustomAlertView */ = {
+			isa = PBXGroup;
+			children = (
+				80CD6CF52BA4864900075419 /* CustomAlertViewController.swift */,
+			);
+			path = CustomAlertView;
+			sourceTree = "<group>";
+		};
+		80CD6CF82BA4A2C000075419 /* Presenter */ = {
+			isa = PBXGroup;
+			children = (
+				80CD6CF92BA4A2CC00075419 /* DetailPresenter.swift */,
+			);
+			path = Presenter;
+			sourceTree = "<group>";
+		};
+		80CD6CFB2BA4A2D400075419 /* Router */ = {
+			isa = PBXGroup;
+			children = (
+				80CD6CFC2BA4A2DC00075419 /* DetailRouter.swift */,
+			);
+			path = Router;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -493,16 +576,25 @@
 				805F1CBB2BA127E3004A700E /* Constants.swift in Sources */,
 				805F1CA82BA118F2004A700E /* HomeRouter.swift in Sources */,
 				805F1CA62BA118C7004A700E /* HomeInteractor.swift in Sources */,
-				805F1CA22BA11857004A700E /* CacheManager.swift in Sources */,
+				80CD6CF32BA479DA00075419 /* DetailViewModel.swift in Sources */,
 				805F1CB72BA12756004A700E /* DataEndpoint.swift in Sources */,
 				805F1CB02BA12351004A700E /* Endpoint.swift in Sources */,
 				805F1C912BA10E82004A700E /* UIColor+Extensions.swift in Sources */,
+				805F1CCA2BA36EF5004A700E /* UIImageView+Extensions.swift in Sources */,
+				80CD6CFF2BA4A32700075419 /* DetailModuleBuilder.swift in Sources */,
 				805F1CA42BA118A5004A700E /* HomePresenter.swift in Sources */,
 				805F1C892BA10E16004A700E /* AppConfigurationManager.swift in Sources */,
 				805F1C9F2BA114AD004A700E /* HomeViewController.swift in Sources */,
+				80CD6CF62BA4864900075419 /* CustomAlertViewController.swift in Sources */,
+				80CD6CF02BA479B400075419 /* TMDBDateFormatter.swift in Sources */,
+				80CD6CEA2BA3CD7100075419 /* CircleRatingView.swift in Sources */,
+				80CD6CFD2BA4A2DC00075419 /* DetailRouter.swift in Sources */,
+				80CD6CED2BA3D7EA00075419 /* EmptyStateView.swift in Sources */,
 				805F1CAC2BA11B04004A700E /* BaseRepository.swift in Sources */,
 				805F1CC82BA1E65C004A700E /* HomeMovieViewModel.swift in Sources */,
+				80CD6CFA2BA4A2CC00075419 /* DetailPresenter.swift in Sources */,
 				805F1CAA2BA11949004A700E /* HomeModuleBuilder.swift in Sources */,
+				805F1CCD2BA375D5004A700E /* DetailViewController.swift in Sources */,
 				805F1C982BA1127F004A700E /* Colors.swift in Sources */,
 				805F1CB22BA1236B004A700E /* HTTPRequestMethod.swift in Sources */,
 				805F1CB52BA123DA004A700E /* TMDBError.swift in Sources */,

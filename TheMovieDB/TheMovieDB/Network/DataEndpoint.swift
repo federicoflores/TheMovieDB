@@ -8,7 +8,7 @@
 import Foundation
 
 enum DataEndpoint {
-    case fetchMovieTopRated
+    case fetchMovieTopRated(page: String)
 }
 
 extension DataEndpoint: Endpoint {
@@ -38,6 +38,13 @@ extension DataEndpoint: Endpoint {
         switch self {
         case .fetchMovieTopRated:
             return nil
+        }
+    }
+    
+    var queryItems: [URLQueryItem] {
+        switch self {
+        case .fetchMovieTopRated(page: let page):
+            return [URLQueryItem(name: "page", value: page)]
         }
     }
 }
