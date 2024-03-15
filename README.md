@@ -1,22 +1,22 @@
 # TheMovieDB
 
-##Architecture:
+## Architecture:
 The architecture is VIPER with a builder to handle the responsability of creation of each module. The Details Module as no logics were set for an interactor is an MVP+R.
 
-##Network request:
+## Network request:
 Combine was used for networking.
 
-##Third party libraries:
+## Third party libraries:
 No third party libraries were used on the app. Therefore no package manager is used either.
 
-##Conifg file
+## Conifg file
 
 A config file was added for protecting the sensible information of the app. In this case the API key
 
 ##Reusable components
 CustomAlertView, EmptyStateView, CircleRatingView and Loader were components created and able to be reused all over the app. Screenshots and videos are attached
 
-##Outputs:
+## Outputs:
 
 EmptySatetView:
 
