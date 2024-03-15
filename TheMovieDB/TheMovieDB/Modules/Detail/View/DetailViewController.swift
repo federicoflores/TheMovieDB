@@ -131,7 +131,7 @@ class DetailViewController: UIViewController, DetailViewProtocols {
         view.translatesAutoresizingMaskIntoConstraints = false
         return view
     }()
-
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         setupViews()

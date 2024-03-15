@@ -98,7 +98,7 @@ class EmptyStateView: UIView {
         addSubview(button)
         
         button.addTarget(self, action: #selector(buttonAction), for: .touchUpInside)
-
+        
     }
     
     private func setupConstraints() {
@@ -127,5 +127,5 @@ class EmptyStateView: UIView {
 }
 
 #Preview("EmptyStateView", traits: .defaultLayout, body: {
-        EmptyStateView()
+    EmptyStateView()
 })

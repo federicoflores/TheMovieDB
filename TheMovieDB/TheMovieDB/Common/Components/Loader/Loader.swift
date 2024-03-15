@@ -1,6 +1,6 @@
 //
 //  Loader.swift
-//  DeptChallenge
+//  TheMovieDB
 //
 //  Created by Fede Flores on 31/01/2024.
 //
@@ -64,7 +64,7 @@ public class Loader: UIView {
         
     }
     
-     func show() {
+    func show() {
         startProgresLoader()
     }
 }
@@ -75,12 +75,12 @@ extension Loader: CAAnimationDelegate {
         startProgresLoader()
     }
     
-     func hide() {
-         progressView?.stopAnimation()
+    func hide() {
+        progressView?.stopAnimation()
         isHidden = true
         self.removeFromSuperview()
     }
-
+    
     func startProgresLoader() {
         isHidden = false
         frontWindow?.endEditing(true)
@@ -101,7 +101,6 @@ class ProgressView: UIView, CAAnimationDelegate {
         animation.toValue = Constant.inAnimationToValue
         animation.duration = Constant.inAnimationDuration
         animation.timingFunction = CAMediaTimingFunction(name: CAMediaTimingFunctionName.easeIn)
-        
         return animation
     }()
     
@@ -112,7 +111,6 @@ class ProgressView: UIView, CAAnimationDelegate {
         animation.toValue = Constant.outAnimationToValue
         animation.duration = Constant.outAnimationDuration
         animation.timingFunction = CAMediaTimingFunction(name: CAMediaTimingFunctionName.easeOut)
-        
         return animation
     }()
     
@@ -122,10 +120,9 @@ class ProgressView: UIView, CAAnimationDelegate {
         animation.toValue = Constant.rotationAnimationToValue
         animation.duration = Constant.rotationAnimationDuration
         animation.repeatCount = MAXFLOAT
-        
         return animation
     }()
-        
+    
     override init(frame: CGRect) {
         super.init(frame: frame)
         initView()
@@ -134,14 +131,14 @@ class ProgressView: UIView, CAAnimationDelegate {
     required init?(coder aDecoder: NSCoder) {
         super.init(coder: aDecoder)
         initView()
-
+        
     }
     
     private func initView() {
         circularLayer.lineWidth = Constant.circularLayerLineWith
         circularLayer.fillColor = nil
         layer.addSublayer(circularLayer)
-
+        
     }
     
     override func layoutSubviews() {
@@ -151,26 +148,24 @@ class ProgressView: UIView, CAAnimationDelegate {
         let radius = min(bounds.width, bounds.height) / 2 - circularLayer.lineWidth / 2
         
         let arcPath = UIBezierPath(arcCenter: .zero, radius: radius, startAngle: CGFloat(Double.pi/2), endAngle: CGFloat(Double.pi/2 + (2 * Double.pi)), clockwise: true)
-                
+        
         circularLayer.position = center
         circularLayer.path = arcPath.cgPath
-        
         circularLayer.add(rotationAnimation, forKey: Constant.circularLayerRotateAnimationKey)
     }
     
     func startAnimation(withColor color: CGColor = TMDBColor.main00.color.cgColor) {
-         circularLayer.removeAnimation(forKey: Constant.circularLayerStrokeAnimationKey)
+        circularLayer.removeAnimation(forKey: Constant.circularLayerStrokeAnimationKey)
         
         circularLayer.strokeColor = color
         strokeAnimationGroup.duration = 1.0 + outAnimation.beginTime
         strokeAnimationGroup.repeatCount = .infinity
         strokeAnimationGroup.animations = [inAnimation, outAnimation]
-        strokeAnimationGroup.delegate = self
-        
+        strokeAnimationGroup.delegate = self        
         circularLayer.add(strokeAnimationGroup, forKey: Constant.circularLayerStrokeAnimationKey)
     }
     
-     func stopAnimation() {
+    func stopAnimation() {
         circularLayer.removeAllAnimations()
     }
 }

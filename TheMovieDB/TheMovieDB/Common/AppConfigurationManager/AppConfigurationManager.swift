@@ -25,5 +25,5 @@ class AppConfigurationManager: AppConfigurationManagerType {
     func getAppConfiguration(with name: AppConfigurationNames) -> String? {
         Bundle.main.object(forInfoDictionaryKey: name.rawValue) as? String
     }
-
+    
 }

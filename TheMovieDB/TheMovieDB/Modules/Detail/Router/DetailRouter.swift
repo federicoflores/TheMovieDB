@@ -11,7 +11,6 @@ protocol DetailRouterProtocols: AnyObject {
     func presentPopup(title: String, subtitle: String, action: (()->())?)
 }
 
-
 class DetailRouter: DetailRouterProtocols {
     
     weak var viewController: UIViewController?
@@ -22,7 +21,7 @@ class DetailRouter: DetailRouterProtocols {
         alertView.titleText = title
         alertView.subtitleText = subtitle
         alertView.mainAction = action
-
+        
         UIView.transition(with: viewController.view, duration: 0.5, options: [.transitionCrossDissolve]) {
             viewController.addChild(alertView)
             viewController.view.addSubview(alertView.view)

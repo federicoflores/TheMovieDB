@@ -25,7 +25,7 @@ class BaseRepository: BaseRepositoryProtocol {
         sessionConfig.timeoutIntervalForRequest = Constant.sesionConfigTimeIntervals
         sessionConfig.timeoutIntervalForResource = Constant.sesionConfigTimeIntervals
     }
-        
+    
     func fetchDecodable<T: Decodable>(endpoint: Endpoint, completion: @escaping (Result<T, Error>) -> Void) {
         
         let baseURL = endpoint.baseURL
@@ -50,7 +50,7 @@ class BaseRepository: BaseRepositoryProtocol {
         endpoint.headers?.forEach {
             urlRequest.setValue($0.value, forHTTPHeaderField: $0.key)
         }
-                        
+        
         URLSession(configuration: sessionConfig)
             .dataTaskPublisher(for: urlRequest)
             .receive(on: DispatchQueue.main)

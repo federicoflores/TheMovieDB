@@ -44,8 +44,8 @@ class CircleRatingView: UIView {
         let path = UIBezierPath(ovalIn: bounds)
         shapeLayer.path = path.cgPath
     }
-
-                        
+    
+    
     private func setup() {
         shapeLayer.fillColor = TMDBColor.main800.color.cgColor
         shapeLayer.lineWidth = Constant.shapeLayerBorderWidth
@@ -55,6 +55,4 @@ class CircleRatingView: UIView {
         ratingLabel.centerXAnchor.constraint(equalTo: centerXAnchor).isActive = true
         ratingLabel.centerYAnchor.constraint(equalTo: centerYAnchor).isActive = true
     }
-    
-    
 }
