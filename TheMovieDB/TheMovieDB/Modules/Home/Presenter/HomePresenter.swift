@@ -20,6 +20,10 @@ protocol HomePresenterProtocols: AnyObject {
 
 class HomePresenter: HomePresenterProtocols {
     
+    fileprivate enum Constant {
+        static let delay: CGFloat = 0.5
+    }
+    
     weak var homeView: HomeViewProtocols?
     var homeInteractor: HomeInteractorProtocols?
     var homeRouter: HomeRouterProtocols?
@@ -31,20 +35,32 @@ class HomePresenter: HomePresenterProtocols {
     
     func fetchTopRatedMovies() {
         homeView?.showLoadingView()
-        homeInteractor?.fetchTopRatedMovies(page: currentPage)
+        DispatchQueue.main.asyncAfter(deadline: .now() + Constant.delay, execute: { [weak self] in
+            guard let self = self else { return }
+            self.homeInteractor?.fetchTopRatedMovies(page: self.currentPage)
+        })
     }
     
     func onFetchTopRatedMoviesSuccess(response: TopRatedResponse) {
         homeView?.hideLoadingView()
         topRatedMoviesResponse.results.append(contentsOf: response.results)
         currentPage += 1
-        homeView?.reloadTableView()
         homeView?.isEmptyStateHidden(isHidden: true)
+        homeView?.insertRows(indexPath: setIndexPaths(response: response))
+    }
+    
+    private func setIndexPaths(response: TopRatedResponse) -> [IndexPath] {
+        var indexPaths: [IndexPath] = []
+        let range = (topRatedMoviesResponse.results.count - response.results.count)..<topRatedMoviesResponse.results.count
+        range.forEach{
+            indexPaths.append(IndexPath(row: $0, section: 0))
+        }
+        return indexPaths
     }
     
     func onFetchTopRatedMoviesFail(error: String) {
         homeView?.hideLoadingView()
-        homeView?.isEmptyStateHidden(isHidden: false)
+        homeView?.isEmptyStateHidden(isHidden: currentPage == 1 ? false : true)
         homeView?.setEmptyStateSubtitle(subtitle: error)
     }
     

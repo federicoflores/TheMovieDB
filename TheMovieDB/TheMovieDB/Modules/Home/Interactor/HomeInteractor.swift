@@ -8,20 +8,20 @@
 import Foundation
 
 protocol HomeInteractorProtocols: AnyObject {
-    var provider: BaseRepositoryProtocol { get }
+    var repository: BaseRepositoryProtocol { get }
     func fetchTopRatedMovies(page: Int)
 }
 
 class HomeInteractor: HomeInteractorProtocols {
-    var provider: BaseRepositoryProtocol
+    var repository: BaseRepositoryProtocol
     weak var homePresenter: HomePresenterProtocols?
     
-    init(provider: BaseRepositoryProtocol) {
-        self.provider = provider
+    init(repository: BaseRepositoryProtocol) {
+        self.repository = repository
     }
     
     func fetchTopRatedMovies(page: Int) {
-        provider.fetchDecodable(endpoint: DataEndpoint.fetchMovieTopRated(page: "\(page)"))  { [weak self] (result: Result<TopRatedResponse, Error>) in
+        repository.fetchDecodable(endpoint: DataEndpoint.fetchMovieTopRated(page: "\(page)"))  { [weak self] (result: Result<TopRatedResponse, Error>) in
             switch result {
             case .success(let response):
                 self?.homePresenter?.onFetchTopRatedMoviesSuccess(response: response)

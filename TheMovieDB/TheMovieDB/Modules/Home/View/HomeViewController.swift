@@ -8,11 +8,11 @@
 import UIKit
 
 protocol HomeViewProtocols: AnyObject {
-    func reloadTableView()
     func showLoadingView()
     func hideLoadingView()
     func isEmptyStateHidden(isHidden: Bool)
     func setEmptyStateSubtitle(subtitle: String)
+    func insertRows(indexPath: [IndexPath])
 }
 
 class HomeViewController: UIViewController {
@@ -105,8 +105,9 @@ class HomeViewController: UIViewController {
 }
 
 extension HomeViewController: HomeViewProtocols {
-    func reloadTableView() {
-        tableView.reloadData()
+    
+    func insertRows(indexPath: [IndexPath]) {
+        tableView.insertRows(at: indexPath, with: .automatic)
     }
     
     func isEmptyStateHidden(isHidden: Bool) {
@@ -132,7 +133,6 @@ extension HomeViewController: UITableViewDelegate, UITableViewDataSource {
         cell.layer.cornerRadius = Constant.cellCornerRadius
         cell.layer.borderColor = TMDBColor.main00.color.cgColor
         cell.layer.borderWidth = Constant.cellBorderWidth
-        cell.layoutSubviews()
         return cell
     }
     

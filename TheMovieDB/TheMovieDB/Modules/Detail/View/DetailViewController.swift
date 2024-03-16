@@ -34,6 +34,7 @@ class DetailViewController: UIViewController, DetailViewProtocols {
         static let overviewLabelTopAnchor: CGFloat = 24
         static let descriptionLabelTopAnchor: CGFloat = 12
         static let releaseDateLabelTopAnchor: CGFloat = 24
+        static let imageViewPlaceholder: String = "placeholder"
     }
     
     fileprivate enum Wording {
@@ -59,6 +60,7 @@ class DetailViewController: UIViewController, DetailViewProtocols {
     
     private let movieImageView: UIImageView = {
         let imageView = UIImageView()
+        imageView.image = UIImage(named: Constant.imageViewPlaceholder)
         imageView.translatesAutoresizingMaskIntoConstraints = false
         return imageView
     }()
@@ -144,7 +146,7 @@ class DetailViewController: UIViewController, DetailViewProtocols {
         descriptionLabel.text = viewModel.overview
         
         let imageURL = (Constants.imageBaseUrl + viewModel.posterPath)
-        movieImageView.load(urlString: imageURL)
+        movieImageView.downloaded(from: imageURL, contentMode: .scaleToFill)
         circleRatingView.rating = viewModel.rating
         
         releaseDateLabel.text = Wording.releaseDateLabelText + viewModel.releaseDate        

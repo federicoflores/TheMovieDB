@@ -1,17 +1,18 @@
 //
-//  HomeModuleBuilder.swift
-//  TheMovieDB
+//  HomeModuleBuilderStub.swift
+//  TheMovieDBTests
 //
-//  Created by Fede Flores on 13/03/2024.
+//  Created by Fede Flores on 15/03/2024.
 //
 
 import UIKit
+@testable import TheMovieDB
 
-class HomeModuleBuilder {
+class HomeModuleBuilderStub {
     static func build() -> UIViewController {
         let view: HomeViewController = HomeViewController()
         let presenter: HomePresenter = HomePresenter()
-        let interactor: HomeInteractor = HomeInteractor(repository: BaseRepository())
+        let interactor: HomeInteractor = HomeInteractor(repository: BaseRepositoryStub())
         let router: HomeRouter = HomeRouter()
         
         view.homePresenter = presenter
@@ -27,3 +28,5 @@ class HomeModuleBuilder {
         return view
     }
 }
+
+

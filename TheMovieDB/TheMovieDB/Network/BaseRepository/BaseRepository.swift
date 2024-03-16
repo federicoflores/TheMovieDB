@@ -35,7 +35,7 @@ class BaseRepository: BaseRepositoryProtocol {
             return
         }
         
-        var urlRequest = URLRequest(url: url, cachePolicy: .reloadIgnoringLocalCacheData, timeoutInterval: 30)
+        var urlRequest = URLRequest(url: url, cachePolicy: .reloadIgnoringLocalAndRemoteCacheData, timeoutInterval: 30)
         urlRequest.url?.append(queryItems: endpoint.queryItems)
         
         urlRequest.httpMethod = endpoint.method.rawValue
