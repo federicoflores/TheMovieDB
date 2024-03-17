@@ -9,7 +9,7 @@ import Foundation
 
 struct DetailMovieViewModel {
     let title: String
-    let posterPath: String
+    let posterStringURL: String
     let releaseDate: String
     let overview: String
     let rating: Double

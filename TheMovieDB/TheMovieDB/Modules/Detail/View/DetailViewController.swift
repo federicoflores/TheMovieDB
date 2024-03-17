@@ -145,8 +145,8 @@ class DetailViewController: UIViewController, DetailViewProtocols {
         titleLabel.text = viewModel.title
         descriptionLabel.text = viewModel.overview
         
-        let imageURL = (Constants.imageBaseUrl + viewModel.posterPath)
-        movieImageView.downloaded(from: imageURL, contentMode: .scaleToFill)
+        movieImageView.loadImageUsingCache(withUrl: viewModel.posterStringURL)
+        movieImageView.contentMode = .scaleToFill
         circleRatingView.rating = viewModel.rating
         
         releaseDateLabel.text = Wording.releaseDateLabelText + viewModel.releaseDate        
@@ -243,7 +243,7 @@ class DetailViewController: UIViewController, DetailViewProtocols {
 
 
 #Preview("DetailViewController", traits: .defaultLayout, body: {
-    DetailViewController(viewModel: DetailMovieViewModel(title: "The Godfather Part II", posterPath: "/hek3koDUyRQk7FIhPXsa6mT2Zc3.jpg", releaseDate: "1974-12-20", overview: "In the continuing saga of the Corleone crime family, a young Vito Corleone grows up in Sicily and in 1910s New York. In the 1950s, Michael Corleone attempts to expand the family business into Las Vegas, Hollywood and Cuba.", rating: 69.864))
+    DetailViewController(viewModel: DetailMovieViewModel(title: "The Godfather Part II", posterStringURL: "/hek3koDUyRQk7FIhPXsa6mT2Zc3.jpg", releaseDate: "1974-12-20", overview: "In the continuing saga of the Corleone crime family, a young Vito Corleone grows up in Sicily and in 1910s New York. In the 1950s, Michael Corleone attempts to expand the family business into Las Vegas, Hollywood and Cuba.", rating: 69.864))
 })
 
 

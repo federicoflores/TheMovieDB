@@ -72,7 +72,7 @@ class HomePresenter: HomePresenterProtocols {
         let movie = topRatedMoviesResponse.results[indexPath]
         homeRouter?.goToDetail(with: DetailMovieViewModel(
             title: movie.title,
-            posterPath: Constants.imageBaseUrl + movie.posterPath,
+            posterStringURL: Constants.imageBaseUrl + movie.posterPath,
             releaseDate: dateFormatter.formatStringDate(stringDate: movie.releaseDate, from: .yearMonthDay, to: .dayMonthYear),
             overview: movie.overview,
             rating: movie.voteAverage))

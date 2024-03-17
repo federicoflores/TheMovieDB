@@ -62,6 +62,7 @@ class HomeMovieTableViewCell: UITableViewCell {
         //movieImageView
         
         movieImageView.contentMode = .scaleAspectFit
+        movieImageView.image = UIImage(named: "placeholder")
         
         movieImageView.topAnchor.constraint(equalTo: titleLabel.bottomAnchor, constant: Constant.movieImageViewTopPadding).isActive = true
         movieImageView.leadingAnchor.constraint(equalTo: contentView.leadingAnchor).isActive = true
@@ -82,7 +83,8 @@ class HomeMovieTableViewCell: UITableViewCell {
     func bind(viewModel: HomeMovieViewModel?) {
         guard let viewModel = viewModel else { return }
         let imageURL = (Constants.imageBaseUrl + viewModel.posterPath)
-        movieImageView.downloaded(from: imageURL)
+        movieImageView.loadImageUsingCache(withUrl: imageURL)
+        movieImageView.contentMode = .scaleAspectFit
         titleLabel.text = viewModel.title
         releaseDateLabel.text = viewModel.releaseDate
     }
