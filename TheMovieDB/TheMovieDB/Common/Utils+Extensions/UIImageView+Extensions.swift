@@ -37,7 +37,6 @@ extension UIImageView {
                     print(urlString)
                     imageCache.setObject(image, forKey: urlString as NSString)
                     self.image = image
-                    activityIndicator.removeFromSuperview()
                 }
             }
 
